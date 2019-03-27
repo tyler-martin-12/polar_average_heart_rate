@@ -4,12 +4,13 @@ import os
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('-session_dir', required=True, type=str, default=None,
-                    help='location of formatted Omniglot data')
+parser.add_argument('-csv_dir', required=True, type=str, default=None)
+parser.add_argument('-session_length', required=True, type=str, default=None)
 
 args = parser.parse_args()
 
-session_file = args.session_dir
+session_file = args.csv_dir
+session_length = args.session_length
 
 def find_mean(heart_rate_array, num_seconds):
     can_continue = True
@@ -39,7 +40,9 @@ if os.path.isfile(session_file):
         x.reset_index(inplace=True)
         x.drop('index', axis=1, inplace=True)
 
-        num_seconds = 45 * 60
+        num_seconds = int(float(session_length) * 60)
+
+        print(num_seconds)
 
         heart_rate_array = x['hr'].apply(lambda y: float(y))
 

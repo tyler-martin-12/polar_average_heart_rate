@@ -1,2 +1,12 @@
+# What is this?
+This script returns the maximum average heart rate during a training session of a fixed length.
+
 # How to run?
-python hr.py -session_dir=sessions/2019_03_26.csv
+1. Download training session csv from https://flow.polar.com/
+
+2. Run
+`python hr.py -csv_dir=sessions/2019_03_26.csv -session_length=45`
+
+`-csv_dir` is the locaiton of the training session csv 
+
+`-session_length` is the length of the training session in minutes 
